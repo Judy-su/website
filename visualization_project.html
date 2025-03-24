@@ -33,10 +33,10 @@
 									<h2 id="content">Introduction</h2>
 									<p>
 										Deforestation remains a critical global challenge, with a net forest conversion of -5,150,000 hectares annually. In this study, we aim to dissect the extent and drivers of this phenomenon, focusing on the following question:
-
-** What are the primary factors contributing to the recent trend of deforestation in the world’s most deforested countries? **
-
-Starting from identifying the world’s most deforested countries, we examine the trends and primary causes of deforestation within Brazil which ranks first in deforestation, to extrapolate insights applicable to other severely deforested countries.
+										<br><br>
+										** What are the primary factors contributing to the recent trend of deforestation in the world’s most deforested countries? **
+										<br><br>
+										Starting from identifying the world’s most deforested countries, we examine the trends and primary causes of deforestation within Brazil which ranks first in deforestation, to extrapolate insights applicable to other severely deforested countries.
 									</p>
 								<hr class="major" />
 
@@ -56,43 +56,10 @@ Starting from identifying the world’s most deforested countries, we examine th
 								</div>
 
 								
-								<!-- Code Chunk Section -->
-								<section>
-								    <header class="major">
-								        <h2 id="elements">R Code Snippets</h2>
-								    </header>
-								    <pre><code>
-								options(scipen = 999)
-									    
-								brazil_loss_new <- brazil_loss %>% 
-								  rename_all(~str_replace_all(., "_", " ")) %>%
-								  pivot_longer(c(-entity, -code, -year), 
-								               names_to = "causes", values_to = "loss_area") %>%
-								  rename("Causes" = "causes")
-								
-								total_forest_loss <- brazil_loss_new %>%
-								  group_by(year) %>%
-								  summarise(sum = sum(loss_area))
-								  
-								ggplot() +
-								  geom_area(data = brazil_loss_new, aes(x = year, y = loss_area, fill = Causes)) +
-								  geom_line(data = total_forest_loss, aes(x = year, y = sum),
-								            size = 1) +
-								  theme_minimal() +
-								  scale_fill_brewer(palette = "RdYlBu") +
-								  labs(x = "Year", y = "Total Forest Area Lost (in hectares)", 
-								       title = "Trend and Causes of Deforestation in Brazil From 2001 to 2013") +
-								  theme(plot.title = element_text(face = "bold", hjust = 0.5)) +
-								  scale_x_continuous(breaks = seq(2001, 2013, by = 2))
-								    </code></pre>
-								</section>
-
 								<!-- Embedded HTML from R Markdown -->
 						                <section>
 									<p>Please have a look at the details of the project.</p>
-						                    <iframe src="dsa2101.html" width="100%" height="800px" style="border:none;">
-						                        Your browser does not support iframes.
-						                    </iframe>
+						                    <a href="dsa2101.html" target="_blank">View Markdown File</a>
 						                </section>
 								
 							</section>
